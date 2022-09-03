@@ -23,8 +23,7 @@ df -h | sed '4!d'
 echo SWAP:
 swapon -s
 echo Сетевые интерфейсы:\n
-echo "Количество интерфейсов: "
-ls /sys/class/net/ | wc -l
+echo "Количество интерфейсов: $(ls /sys/class/net/ | wc -l)"
 echo -e "\nИмя сетевого интерфейса\t\tMAC адрес\t\tIP адрес\t\tСкорость соединения"
 for var in /sys/class/net/*; do
   echo -ne "${var##*/}\t\t\t\t"
