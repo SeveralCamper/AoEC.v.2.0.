@@ -1,15 +1,17 @@
 #include "CP_evaluation.h"
 
-void time_start() {
+double time_start() {
     gettimeofday(&time_val_1, NULL);
-    printf("time_val_1: %ld\n", time_val_1.tv_sec);
+    printf("time_val_1: %ld\n", time_val_1.tv_usec);
+
+    return time_val_1.tv_usec;
 }
 
 double time_stop() {
     double resault = 0;
-    gettimeofday(&time_val_1, &time_val_2);
-    printf("time_val_1: %ld\n", time_val_1.tv_sec);
-    printf("time_val_2: %ld\n", time_val_2.tv_sec);
+    gettimeofday(&time_val_2, NULL);
+    printf("time_val_1: %ld\n", time_val_1.tv_usec);
+    printf("time_val_2: %ld\n", time_val_2.tv_usec);
     data_time_val.tv_sec = time_val_2.tv_sec - time_val_1.tv_sec;
     data_time_val.tv_usec = time_val_2.tv_usec - time_val_1.tv_usec;
     if (data_time_val.tv_usec < 0) {
@@ -33,7 +35,7 @@ void first_CPE_check() {
 
 // *****
 
-void time_start_2() {
+/* void time_start_2() {
     times(&tmsBegin);
 }
 
@@ -51,7 +53,7 @@ void second_CPE_check() {
     time_start();
     val_res = 5 * ((val_1 - val_2) + val_1) - (val_2 / val_1) * 4.5 - 1.12;
     printf("Time: %lf Resault: %lf\n", time_stop(), val_res);
-}
+} */
 
 int main() {
     char c;
