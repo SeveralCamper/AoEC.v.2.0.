@@ -14,7 +14,7 @@ free
 echo Жесктий диск:
 sudo fdisk -l | sed '51!d'
 sudo fdisk -l | sed '52!d'
-sudo fdisk -l | sed '53 !d'
+sudo fdisk -l | sed '53!d'
 sudo fdisk -l | sed '54!d'
 sudo fdisk -l | sed '55!d'
 echo
