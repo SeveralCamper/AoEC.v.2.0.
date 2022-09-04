@@ -24,13 +24,18 @@ double time_stop() {
     return resault;
 }
 
-void first_CPE_check() {
-    int val_1 = 7, val_2 = 5;
-    double val_res = 0;
+void first_CPE_check(int rows, int cols) {
     matrix_t matrix_1, matrix_2;
+    matrix_1 = s21_create_matrix(rows, cols);
+    matrix_2 = s21_create_matrix(cols, rows);
     time_start();
-    val_res = 5 * ((val_1 - val_2) + val_1) - (val_2 / val_1) * 4.5 - 1.12;
-    printf("Time: %lf Resault: %lf usec(microsec)\n", time_stop(), val_res);
+    matrix_1 = s21_sum_matrix(&matrix_1, &matrix_1);
+    matrix_1 = s21_sum_matrix(&matrix_2, &matrix_2);
+    matrix_1 = s21_mult_matrix(&matrix_1, &matrix_2);
+    matrix_1 = s21_transpose(&matrix_1);
+    matrix_1 = s21_calc_complements(&matrix_1);
+    matrix_1 = s21_inverse_matrix(&matrix_1);
+    printf("Time: %lf usec(microsec)\n", time_stop());
 }
 
 // *****
@@ -69,7 +74,7 @@ int main() {
         if ((scanf("%d%c", &program_option, &c) == 2) && (c == '\n') && (program_option != 0)) {
             switch(program_option) {
                 case 1:
-                    first_CPE_check();
+                    first_CPE_check(5, 7);
                     break;
                 case 2:
                     break;

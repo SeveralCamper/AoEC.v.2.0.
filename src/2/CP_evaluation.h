@@ -14,7 +14,7 @@
 //  gettimeofday()
 struct timeval time_val_1, time_val_2, data_time_val;
 
-void first_CPE_check();
+void first_CPE_check(int rows, int cols);
 
 double time_start();
 double time_stop();

@@ -1,6 +1,7 @@
 CC = gcc -std=c11
 CFLAGS = -Wall -Werror -Wextra
 LIBS = -lcheck -lsubunit -lrt -lpthread -lm
+TARGET = CP_evaluation
 
 all: clean CP_evaluation.a run
 
@@ -20,10 +21,8 @@ CP_evaluation.a: ../obj/CP_evaluation.o ../obj/s21_matrix.o
 
 run: clean start
 
-start:
-	gcc CP_evaluation.c $(CFLAGS) -lm
-	./a.out
-
+start: $(TARGET)
+	./CP_evaluation
 clean:	
 		rm -rf CP_evaluation.a
 		rm -rf CP_evaluation
