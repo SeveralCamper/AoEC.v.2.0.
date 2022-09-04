@@ -14,21 +14,22 @@ double time_stop() {
         data_time_val.tv_sec--;
         data_time_val.tv_usec += 1000000;
     }
-
-    printf("Time: %lf \n", (double)((time_val_1.tv_sec)));
-    printf("Time: %lf \n", (double)((time_val_2.tv_sec)));
-    printf("Time: %lf \n", (double)((time_val_1.tv_usec)));
-    printf("Time: %lf \n", (double)((time_val_2.tv_usec)));
     resault = (double) (data_time_val.tv_sec + data_time_val.tv_usec) / 1000;
 
     return resault;
 }
 
-void first_CPE_check(int rows, int cols) {
+void CPE_check(int rows, int cols) {
     matrix_t matrix_1, matrix_2;
     matrix_1 = s21_create_matrix(rows, cols);
     matrix_2 = s21_create_matrix(cols, rows);
+    s21_rand_matrix(&matrix_1);
+    s21_rand_matrix(&matrix_2);
     time_start();
+    printf("Random input data:\n");
+    /* s21_print_matrix(matrix_1);
+    printf("\n");
+    s21_print_matrix(matrix_2); */ //  for tests
     matrix_1 = s21_sum_matrix(&matrix_1, &matrix_1);
     matrix_1 = s21_sum_matrix(&matrix_2, &matrix_2);
     matrix_1 = s21_mult_matrix(&matrix_1, &matrix_2);
@@ -36,29 +37,9 @@ void first_CPE_check(int rows, int cols) {
     matrix_1 = s21_calc_complements(&matrix_1);
     matrix_1 = s21_inverse_matrix(&matrix_1);
     printf("Time: %lf usec(microsec)\n", time_stop());
+    s21_remove_matrix(&matrix_1);
+    s21_remove_matrix(&matrix_2);
 }
-
-// *****
-
-/* void time_start_2() {
-    times(&tmsBegin);
-}
-
-long time_stop_2() {
-    long res = 0;
-    times(&tmsEnd);
-    res = ((tmsEnd->tms_utime - tmsBegin->tms_utime)+
-        (tmsEnd->tms_stime - tmsBegin->tms_stime)) * 1000 / CLK_TCK;
-    return res;
-}
-
-void second_CPE_check() {
-    int val_1 = 7, val_2 = 5;
-    double val_res = 0;
-    time_start();
-    val_res = 5 * ((val_1 - val_2) + val_1) - (val_2 / val_1) * 4.5 - 1.12;
-    printf("Time: %lf Resault: %lf\n", time_stop(), val_res);
-} */
 
 int main() {
     system("sync");
@@ -67,28 +48,15 @@ int main() {
     s21_create_matrix(7, 5);
 
     char c;
-    int program_option = 0;
-    printf("Plese, enter program option:\n1. gettimeofday().\n");
-    printf("2. times()\n3. processor cycle counter.\n0. exit\n");
-    while(1) {
-        if ((scanf("%d%c", &program_option, &c) == 2) && (c == '\n') && (program_option != 0)) {
-            switch(program_option) {
-                case 1:
-                    first_CPE_check(5, 7);
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    printf("Invalid input! Value out of range!\n");
-                    break;
-            }
-        } else {
-            printf("\033c");
-            break;
+    int number_of_tests = 0;
+    printf("Plese, enter number of tests: ");
+    if ((scanf("%d%c", &number_of_tests, &c) == 2) && (c == '\n') && (number_of_tests > 10)) {
+        for (int i = 0; i < number_of_tests; i++) {
+            printf("Test #%d:\nTest resault:", (i + 1));
+            CPE_check(5, 7);
+            printf("\n");
         }
-        printf("Plese, enter program option:\n1. gettimeofday().\n");
-        printf("2. times()\n3. processor cycle counter.\n0. exit\n");
+    } else {
+        printf("\033c");
     }
 }

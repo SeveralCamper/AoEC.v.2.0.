@@ -384,3 +384,12 @@ matrix_t s21_minor(matrix_t * A, int i_idx, int j_idx) {
 
     return minor;
 }
+
+void s21_rand_matrix(matrix_t *A) {
+    srand(time(NULL));
+    for (int i = 0; i < A->rows; i++) {
+        for (int j = 0; j < A->columns; j++) {
+            A->matrix[i][j] = (((double)rand() / 10000000))*RAND_MAX;;
+        }
+    }
+}

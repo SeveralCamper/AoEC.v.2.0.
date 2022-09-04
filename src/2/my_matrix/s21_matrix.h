@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <math.h>
 
 #define EPS 1e-7
@@ -30,6 +31,7 @@ typedef struct matrix_struct {
 double s21_determinant(matrix_t *A);
 double ** s21_memory_allocation(int rows, int columns);
 
+void s21_rand_matrix(matrix_t *A);
 void s21_print_matrix(matrix_t A);
 void s21_remove_matrix(matrix_t *A);
 void s21_fill_matrix(matrix_t *A, double iterator);
