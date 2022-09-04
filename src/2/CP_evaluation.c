@@ -41,6 +41,68 @@ double CPE_check(int rows, int cols) {
     return res;
 }
 
+void create_report(int number_of_tests, double *res_array, double average_test_time,
+    double despersion, double standart_deviation) {
+    FILE *report_csv;
+    report_csv = fopen("report.csv", "w");
+    fprintf(report_csv, ";");
+    for (int i = 0; i < number_of_tests; i++) {
+        if (i != number_of_tests - 1) {
+            fprintf(report_csv, "%d;", (i+1));
+        } else {
+            fprintf(report_csv, "%d;\n", (i+1));
+        }
+    }
+    fprintf(report_csv, "Pmodel;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "Intel(R) Core(TM) i5-10300H;");
+    }
+    fprintf(report_csv, "\nTask;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "Matrix Sum Mult Transpose CalcComplements Inverse;");
+    }
+    fprintf(report_csv, "\nOpType;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "matrix_t/double;");
+    }
+    fprintf(report_csv, "\nOpt;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "None;");
+    }
+    fprintf(report_csv, "\nInsCOunt;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "6;");
+    }
+    fprintf(report_csv, "\nTimer;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "gettimeofday();");
+    }
+    fprintf(report_csv, "\nTime;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "%lf;", res_array[i]);
+    }
+    fprintf(report_csv, "\nLNum;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "%d;", i);
+    }
+    fprintf(report_csv, "\nAvTime;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "%lf;", average_test_time);
+    }
+    fprintf(report_csv, "\nAbsError;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "%lf;", despersion);
+    }
+    fprintf(report_csv, "\nRelError;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "%lf%%;", (standart_deviation) * 100);
+    }
+    fprintf(report_csv, "\nTaskPerf;");
+    for (int i = 0; i < number_of_tests; i++) {
+        fprintf(report_csv, "???;");
+    }
+}
+
 int main() {
     system("sync");
     printf("\033c");
@@ -48,16 +110,25 @@ int main() {
     int number_of_tests = 0;
     printf("Plese, enter number of tests: ");
     if ((scanf("%d%c", &number_of_tests, &c) == 2) && (c == '\n') && (number_of_tests > 10)) {
+        double res_array[number_of_tests];
         s21_create_matrix(5, 7);
         s21_create_matrix(7, 5);
-        double average_test_time = 0;
+        double average_test_time = 0, despersion = 0;
         for (int i = 0; i < number_of_tests; i++) {
             printf("Test #%d:\nTest resault:", (i + 1));
-            average_test_time += CPE_check(5, 7);
+            res_array[i] = CPE_check(5, 7);
+            average_test_time += res_array[i];
         }
-        printf("Average test time for a typical task: %lf\n", (average_test_time) / number_of_tests);
-        printf("Dispersion for a typical task: %lf\n", (average_test_time) / number_of_tests);
+        average_test_time = (average_test_time) / number_of_tests;
+        for (int i = 0; i < number_of_tests; i++) {
+            despersion += powl(res_array[i] - average_test_time, 2); 
+        }
         printf("\n");
+        despersion = despersion / number_of_tests;
+        printf("Average test time for a typical task: %lf\n", average_test_time);
+        printf("Dispersion for a typical task: %lf\n", despersion);
+        printf("Standart deviation for a typical task: %lf\n", sqrt(despersion));
+        create_report(number_of_tests, res_array, average_test_time, despersion, sqrt(despersion));    
     } else {
         printf("\033c");
     }
