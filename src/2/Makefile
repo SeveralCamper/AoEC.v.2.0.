@@ -1,7 +1,7 @@
 CC = gcc -std=c11
 CFLAGS = -Wall -Werror -Wextra
 LIBS = -lcheck -lsubunit -lrt -lpthread -lm
-TARGET = CP_evaluation
+TARGET = ../bin/CP_evaluation
 
 all: clean CP_evaluation.a run
 
@@ -22,11 +22,9 @@ CP_evaluation.a: ../obj/CP_evaluation.o ../obj/s21_matrix.o
 run: clean start
 
 start: $(TARGET)
-	./CP_evaluation
+	./../bin/CP_evaluation
 clean:	
-		rm -rf CP_evaluation.a
-		rm -rf CP_evaluation
-		rm -rf CP_evaluationTest
+		rm -rf CP_evaluation CP_evaluation.a ../bin/CP_evaluation
 		rm -rf *.o *.so *.a fizz *.gc* *.info report *.out *.gcda *.so *.gcno *.info
 		rm -rf test/*.o test/*.so test/*.a  test/*.gcda  test/*.so  test/*.gcno  test/*.info
 

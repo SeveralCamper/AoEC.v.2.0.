@@ -12,7 +12,7 @@
 //  gettimeofday()
 struct timeval time_val_1, time_val_2, data_time_val;
 
-void CPE_check(int rows, int cols);
+double CPE_check(int rows, int cols);
 
 double time_start();
 double time_stop();

@@ -19,7 +19,7 @@ double time_stop() {
     return resault;
 }
 
-void CPE_check(int rows, int cols) {
+double CPE_check(int rows, int cols) {
     matrix_t matrix_1, matrix_2;
     matrix_1 = s21_create_matrix(rows, cols);
     matrix_2 = s21_create_matrix(cols, rows);
@@ -27,35 +27,37 @@ void CPE_check(int rows, int cols) {
     s21_rand_matrix(&matrix_2);
     time_start();
     printf("Random input data:\n");
-    /* s21_print_matrix(matrix_1);
-    printf("\n");
-    s21_print_matrix(matrix_2); */ //  for tests
     matrix_1 = s21_sum_matrix(&matrix_1, &matrix_1);
     matrix_1 = s21_sum_matrix(&matrix_2, &matrix_2);
     matrix_1 = s21_mult_matrix(&matrix_1, &matrix_2);
     matrix_1 = s21_transpose(&matrix_1);
     matrix_1 = s21_calc_complements(&matrix_1);
     matrix_1 = s21_inverse_matrix(&matrix_1);
-    printf("Time: %lf usec(microsec)\n", time_stop());
+    double res = time_stop();
+    printf("Time: %lf usec(microsec)\n", res);
     s21_remove_matrix(&matrix_1);
     s21_remove_matrix(&matrix_2);
+
+    return res;
 }
 
 int main() {
     system("sync");
     printf("\033c");
-    s21_create_matrix(5, 7);
-    s21_create_matrix(7, 5);
-
     char c;
     int number_of_tests = 0;
     printf("Plese, enter number of tests: ");
     if ((scanf("%d%c", &number_of_tests, &c) == 2) && (c == '\n') && (number_of_tests > 10)) {
+        s21_create_matrix(5, 7);
+        s21_create_matrix(7, 5);
+        double average_test_time = 0;
         for (int i = 0; i < number_of_tests; i++) {
             printf("Test #%d:\nTest resault:", (i + 1));
-            CPE_check(5, 7);
-            printf("\n");
+            average_test_time += CPE_check(5, 7);
         }
+        printf("Average test time for a typical task: %lf\n", (average_test_time) / number_of_tests);
+        printf("Dispersion for a typical task: %lf\n", (average_test_time) / number_of_tests);
+        printf("\n");
     } else {
         printf("\033c");
     }
