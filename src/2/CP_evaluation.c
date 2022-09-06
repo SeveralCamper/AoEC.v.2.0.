@@ -25,20 +25,25 @@ double CPE_check(int rows, int cols) {
     matrix_2 = s21_create_matrix(cols, rows);
     s21_rand_matrix(&matrix_1);
     s21_rand_matrix(&matrix_2);
-    time_start();
     printf("Random input data:\n");
+    time_start();
     matrix_1 = s21_sum_matrix(&matrix_1, &matrix_1);
     matrix_1 = s21_sum_matrix(&matrix_2, &matrix_2);
-    matrix_1 = s21_mult_matrix(&matrix_1, &matrix_2);
-    matrix_1 = s21_transpose(&matrix_1);
-    matrix_1 = s21_calc_complements(&matrix_1);
-    matrix_1 = s21_inverse_matrix(&matrix_1);
     double res = time_stop();
     printf("Time: %lf usec(microsec)\n", res);
     s21_remove_matrix(&matrix_1);
     s21_remove_matrix(&matrix_2);
 
     return res;
+}
+
+double calculate_score(int * res_array, int res_array_size, double average) {
+    double resault;
+    for (int i = 0; i < res_array_size; i++) {
+        resault += 1 / (1 / res_array[i]);
+    }
+
+    return pow(1 / (1 / ), -1)
 }
 
 void create_report(int number_of_tests, double *res_array, double average_test_time,
@@ -99,7 +104,7 @@ void create_report(int number_of_tests, double *res_array, double average_test_t
     }
     fprintf(report_csv, "\nTaskPerf;");
     for (int i = 0; i < number_of_tests; i++) {
-        fprintf(report_csv, "???;");
+        fprintf(report_csv, "%lf;", calculate_score(&res_array, number_of_tests, average_test_time););
     }
 }
 
@@ -111,12 +116,10 @@ int main() {
     printf("Plese, enter number of tests: ");
     if ((scanf("%d%c", &number_of_tests, &c) == 2) && (c == '\n') && (number_of_tests > 10)) {
         double res_array[number_of_tests];
-        s21_create_matrix(5, 7);
-        s21_create_matrix(7, 5);
         double average_test_time = 0, despersion = 0;
         for (int i = 0; i < number_of_tests; i++) {
             printf("Test #%d:\nTest resault:", (i + 1));
-            res_array[i] = CPE_check(5, 7);
+            res_array[i] = CPE_check(1000, 1000);
             average_test_time += res_array[i];
         }
         average_test_time = (average_test_time) / number_of_tests;

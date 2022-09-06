@@ -63,9 +63,9 @@ void s21_print_matrix(matrix_t A) {
     for (int i = 0; i < A.rows; i++) {
         for (int j = 0; j < A.columns; j++) {
             if (j == A.columns - 1) {
-                printf("%lf", A.matrix[i][j]);
+                printf("%d", A.matrix[i][j]);
             } else {
-                printf("%lf ", A.matrix[i][j]);
+                printf("%d ", A.matrix[i][j]);
             }
         }
         printf("\n");
@@ -79,7 +79,7 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B) {
     A->rows == B->rows) {
         for (int i = 0; i < A->rows; i++) {
             for (int j = 0; j < A->columns; j++) {
-                if (fabs(A->matrix[i][j]) - fabs(B->matrix[i][j]) >= EPS
+                if (abs(A->matrix[i][j]) - abs(B->matrix[i][j]) >= EPS
                 && isinf_isnan_check(A->matrix[i][j]) == 1
                 && isinf_isnan_check(B->matrix[i][j]) == 1) {
                     exit_flag = FAILURE;
@@ -306,12 +306,12 @@ matrix_t s21_inverse_matrix(matrix_t *A) {
     return inverse_matrix;
 }
 
-double ** s21_memory_allocation(int rows, int columns) {
+int ** s21_memory_allocation(int rows, int columns) {
     int error = 0;
-    double ** matrix = calloc(rows, sizeof(double *));
+    int ** matrix = calloc(rows, sizeof(int *));
     if (matrix != NULL) {
         for  (int i = 0; i < rows; i++) {
-            matrix[i] = calloc(columns, sizeof(double));
+            matrix[i] = calloc(columns, sizeof(int));
             if (matrix[i] == NULL) {
                 error = 1;
                 break;
@@ -389,7 +389,7 @@ void s21_rand_matrix(matrix_t *A) {
     srand(time(NULL));
     for (int i = 0; i < A->rows; i++) {
         for (int j = 0; j < A->columns; j++) {
-            A->matrix[i][j] = (((double)rand() / 10000000))*RAND_MAX;;
+            A->matrix[i][j] = (((int)rand() / 100000))*RAND_MAX;;
         }
     }
 }

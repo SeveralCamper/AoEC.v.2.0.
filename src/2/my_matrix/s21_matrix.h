@@ -22,14 +22,14 @@ typedef enum {
 
 
 typedef struct matrix_struct {
-    double** matrix;
+    int** matrix;
     int rows;
     int columns;
     matrix_type_t matrix_type;
 } matrix_t;
 
 double s21_determinant(matrix_t *A);
-double ** s21_memory_allocation(int rows, int columns);
+int ** s21_memory_allocation(int rows, int columns);
 
 void s21_rand_matrix(matrix_t *A);
 void s21_print_matrix(matrix_t A);
