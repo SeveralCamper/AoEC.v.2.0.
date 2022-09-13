@@ -5,8 +5,8 @@ TARGET = ../bin/CP_evaluation
 
 all: clean add_report CP_evaluation.a run
 
-$(TARGET): ../obj/CP_evaluation.o ../obj/s21_matrix.o CP_evaluation.a
-	$(CC) ../obj/CP_evaluation.o ../obj/s21_matrix.o $(CFLAGS) $(LIBS) -L. CP_evaluation.a -o $@
+$(TARGET): ../obj/CP_evaluation.o ../obj/report.o ../obj/s21_matrix.o CP_evaluation.a
+	$(CC) ../obj/CP_evaluation.o ../obj/report.o ../obj/s21_matrix.o $(CFLAGS) $(LIBS) -L. CP_evaluation.a -o $@
 
 ../obj/CP_evaluation.o: CP_evaluation.c
 	$(CC) -c CP_evaluation.c $(CFLAGS) $(LIBS) -o $@
@@ -14,7 +14,10 @@ $(TARGET): ../obj/CP_evaluation.o ../obj/s21_matrix.o CP_evaluation.a
 ../obj/s21_matrix.o: my_matrix/s21_matrix.c
 	$(CC) -c my_matrix/s21_matrix.c $(CFLAGS) $(LIBS) -o $@
 
-CP_evaluation.a: ../obj/CP_evaluation.o ../obj/s21_matrix.o
+../obj/report.o: create_report/report.c
+	$(CC) -c create_report/report.c $(CFLAGS) $(LIBS) -o $@
+
+CP_evaluation.a: ../obj/CP_evaluation.o ../obj/s21_matrix.o ../obj/report.o
 	ar rcs $@ $^
 	ranlib $@
 	cp $@ lib$@

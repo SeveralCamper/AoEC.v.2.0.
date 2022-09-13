@@ -22,18 +22,36 @@ typedef enum {
 
 
 typedef struct matrix_struct {
-    int** matrix;
+    double** matrix;
     int rows;
     int columns;
     matrix_type_t matrix_type;
 } matrix_t;
 
+typedef struct matrix_struct_float {
+    float** matrix;
+    int rows;
+    int columns;
+    matrix_type_t matrix_type;
+} matrix_t_f;
+
+typedef struct matrix_struct_int {
+    int** matrix;
+    int rows;
+    int columns;
+    matrix_type_t matrix_type;
+} matrix_t_i;
+
 double s21_determinant(matrix_t *A);
-int ** s21_memory_allocation(int rows, int columns);
+double ** s21_memory_allocation(int rows, int columns);
+int ** s21_memory_allocation_int(int rows, int columns);
+float ** s21_memory_allocation_float(int rows, int columns);
 
 void s21_rand_matrix(matrix_t *A);
 void s21_print_matrix(matrix_t A);
 void s21_remove_matrix(matrix_t *A);
+void s21_rand_matrix_int(matrix_t_i *A);
+void s21_rand_matrix_float(matrix_t_f *A);
 void s21_fill_matrix(matrix_t *A, double iterator);
 void s21_init_matrix(matrix_t * A, int colums, int rows, int type);
 
@@ -52,5 +70,13 @@ matrix_t s21_mult_matrix(matrix_t *A, matrix_t *B);
 matrix_t s21_mult_number(matrix_t *A, double number);
 matrix_t s21_minor(matrix_t * A, int i_idx, int j_idx);
 matrix_t s21_arifmetic_matrix(matrix_t *A, matrix_t *B, int type);
+
+matrix_t_i s21_create_matrix_int(int rows, int columns);
+matrix_t_i s21_sum_matrix_int(matrix_t_i *A, matrix_t_i *B);
+matrix_t_i s21_arifmetic_matrix_int(matrix_t_i *A, matrix_t_i *B, int type);
+
+matrix_t_f s21_create_matrix_float(int rows, int columns);
+matrix_t_f s21_sum_matrix_float(matrix_t_f *A, matrix_t_f *B);
+matrix_t_f s21_arifmetic_matrix_float(matrix_t_f *A, matrix_t_f *B, int type);
 
 #endif  // SRC_S21_MATRIX_H_

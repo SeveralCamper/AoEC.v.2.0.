@@ -1,0 +1,42 @@
+;1;2;3;4;5;6;7;8;9;10;11;
+Pmodel;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;
+Task;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;Matrix Sum Mult Transpose CalcComplements Inverse;
+OpType;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;matrix_t/double;
+Opt;None;None;None;None;None;None;None;None;None;None;None;
+InsCOunt;6;6;6;6;6;6;6;6;6;6;6;
+Timer;gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();
+Time;0.007000;0.009000;0.005000;0.006000;0.009000;0.005000;0.006000;0.006000;0.006000;0.014000;0.027000;
+LNum;0;1;2;3;4;5;6;7;8;9;10;
+AvTime;0.009091;0.009091;0.009091;0.009091;0.009091;0.009091;0.009091;0.009091;0.009091;0.009091;0.009091;
+AbsError;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;
+RelError;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;0.618583%;
+TaskPerf;110.000000;110.000000;110.000000;110.000000;110.000000;110.000000;110.000000;110.000000;110.000000;110.000000;110.000000;
+
+1;2;3;4;5;6;7;8;9;10;11;
+Pmodel;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;
+Task;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;
+OpType;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;matrix_t/float;
+Opt;None;None;None;None;None;None;None;None;None;None;None;
+InsCOunt;6;6;6;6;6;6;6;6;6;6;6;
+Timer;gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();
+Time;0.004000;0.004000;0.006000;0.004000;0.004000;0.005000;0.004000;0.004000;0.008000;0.005000;0.005000;
+LNum;0;1;2;3;4;5;6;7;8;9;10;
+AvTime;0.004818;0.004818;0.004818;0.004818;0.004818;0.004818;0.004818;0.004818;0.004818;0.004818;0.004818;
+AbsError;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;
+RelError;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;0.082322%;
+TaskPerf;207.547170;207.547170;207.547170;207.547170;207.547170;207.547170;207.547170;207.547170;207.547170;207.547170;207.547170;
+
+1;2;3;4;5;6;7;8;9;10;11;
+Pmodel;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;Intel(R) Core(TM) i5-10300H;
+Task;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;Matrix Sum;
+OpType;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;matrix_t/int;
+Opt;None;None;None;None;None;None;None;None;None;None;None;
+InsCOunt;6;6;6;6;6;6;6;6;6;6;6;
+Timer;gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();gettimeofday();
+Time;0;0;0;0;0;0;0;0;0;0;0;
+LNum;0;1;2;3;4;5;6;7;8;9;10;
+AvTime;0.004273;0.004273;0.004273;0.004273;0.004273;0.004273;0.004273;0.004273;0.004273;0.004273;0.004273;
+AbsError;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;0.000038;
+RelError;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;0.131111%;
+TaskPerf;234.042553;234.042553;234.042553;234.042553;234.042553;234.042553;234.042553;234.042553;234.042553;234.042553;234.042553;
+
