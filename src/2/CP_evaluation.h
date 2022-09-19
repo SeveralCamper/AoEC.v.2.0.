@@ -17,4 +17,4 @@ double* CPE_check(int rows, int cols);
 double time_start();
 double time_stop();
 
-#endif  //  SRC_CP_EVALUTION_H_
+#endif //  SRC_CP_EVALUTION_H_
