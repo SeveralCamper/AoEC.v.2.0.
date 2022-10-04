@@ -1,8 +1,8 @@
 #!/bin/bash
 
-g++ *.cpp -std=c++17 -o memory_test
+g++ MemSysPerformanceEval.cpp
 
-for ((idx=1;idx<5;idx++)) do
-    echo ./memory_test -m RAM -b 10Mb -l ${idx} 
-    echo $(./memory_test -m RAM -b 10Mb -l ${idx} ) 
-done
+./a.out –m RAM –b 8 Mb –l 10
+./a.out –m SSD –b 4 Mb –l 20
+
+
