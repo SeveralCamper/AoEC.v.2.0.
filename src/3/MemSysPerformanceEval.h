@@ -1,19 +1,18 @@
 #ifndef SRC_MEM_SYS_PERFORMANCE_EVAL
 #define SRC_MEM_SYS_PERFORMANCE_EVAL
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <sys/time.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include <time.h>
+#include <math.h>
 
 //  Computing performance evaluation
 
-//  gettimeofday()
-struct timeval time_val_1, time_val_2, data_time_val;
-
-double* CPE_check(int rows, int cols);
-
-double time_start();
-double time_stop();
+double meanSquareDeviation(double array[], int n, char combination);
+long int writeTimeFile(int *block, long int size, std::string path);
+long int writeTime(int *block, long int size);
+long int readTime(int *block, long int size);
 
 #endif //  SRC_MEM_SYS_PERFORMANCE_EVAL

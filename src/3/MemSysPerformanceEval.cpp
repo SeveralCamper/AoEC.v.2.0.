@@ -1,12 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <time.h>
-#include <math.h>
+#include "MemSysPerformanceEval.h"
 
-// using namespace std;
-
-double meanSquareDeviation(double array[], int n, char combination) { // Нахождение среднеквадратиченого отклонения
+// Нахождение среднеквадратиченого отклонения
+double meanSquareDeviation(double array[], int n, char combination) {
 	double averageSum = 0, difference = 0, sumDifference = 0, dispersion = 0, deviation = 0;
 
 	for (int i = 0; i < n; i++) {
@@ -32,7 +27,8 @@ double meanSquareDeviation(double array[], int n, char combination) { // Нах�
 	return deviation;
 }
 
-long int writeTime(int *block, long int size) { // Функция записи
+// Функция записи
+long int writeTime(int *block, long int size) {
 	long int i;
 	srand(time(0));
 	struct timespec mt1, mt2;
@@ -49,7 +45,8 @@ long int writeTime(int *block, long int size) { // Функция записи
 	return tt;
 }
 
-long int readTime(int *block, long int size) { // Функция чтения
+// Функция чтения
+long int readTime(int *block, long int size) {
 	long int i;
 	srand(time(0));
 	struct timespec mt1, mt2;
@@ -64,7 +61,8 @@ long int readTime(int *block, long int size) { // Функция чтения
 	return tt;
 }
 
-long int writeTimeFile(int *block, long int size, std::string path) { // Функция записи в файл
+// Функция записи в файл
+long int writeTimeFile(int *block, long int size, std::string path) {
 	int n = 10000;
 	std::ofstream file(path);
 	long int i;
